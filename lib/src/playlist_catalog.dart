@@ -1,3 +1,4 @@
+import 'package:dd_music_playlist/src/network/data_source/playlist_data_source.dart';
 import 'package:dd_music_playlist/src/item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -5,13 +6,12 @@ import 'package:flutter/material.dart';
 import 'item_page.dart';
 
 class MusicCatalog extends ChangeNotifier {
-  static const maxCacheDistance = 50;
+  static const maxCacheDistance = 100;
 
   final Map<int, ItemPage> _pages = {};
   final Set<int> _pagesBeingFetched = {};
 
   int? itemCount;
-
   bool _isDisposed = false;
 
   @override
@@ -53,8 +53,6 @@ class MusicCatalog extends ChangeNotifier {
     _pruneCache(startingIndex);
 
     if (!_isDisposed) {
-      // Notify the widgets that are listening to the catalog that they
-      // should rebuild.
       notifyListeners();
     }
   }

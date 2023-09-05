@@ -1,6 +1,6 @@
 import 'package:dd_music_playlist/src/item.dart';
-import 'package:dd_music_playlist/src/item_tile.dart';
-import 'package:dd_music_playlist/src/music_catalog.dart';
+import 'package:dd_music_playlist/src/item_list_tile.dart';
+import 'package:dd_music_playlist/src/playlist_catalog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
                 var musicCatalog = Provider.of<MusicCatalog>(context);
 
                 return switch (musicCatalog.getByIndex(index)) {
-                  Item(isLoading: true) => const LoadingItemTile(),
-                  var item => ItemTile(item: item)
+                  Item(isLoading: true) => const LoadingItemListTile(),
+                  var item => ItemListTile(item: item)
                 };
               },
             ),

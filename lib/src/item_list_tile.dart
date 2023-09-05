@@ -1,10 +1,10 @@
 import 'package:dd_music_playlist/src/item.dart';
 import 'package:flutter/material.dart';
 
-class ItemTile extends StatelessWidget {
+class ItemListTile extends StatelessWidget {
   final Item item;
 
-  const ItemTile({required this.item, super.key});
+  const ItemListTile({required this.item, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +21,8 @@ class ItemTile extends StatelessWidget {
   }
 }
 
-class LoadingItemTile extends StatelessWidget {
-  const LoadingItemTile({super.key});
+class LoadingItemListTile extends StatelessWidget {
+  const LoadingItemListTile({super.key});
 
   @override
   Widget build(BuildContext context) {

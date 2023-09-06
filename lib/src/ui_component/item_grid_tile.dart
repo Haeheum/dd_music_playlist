@@ -1,4 +1,4 @@
-import 'package:dd_music_playlist/src/item.dart';
+import 'package:dd_music_playlist/src/model/item.dart';
 import 'package:flutter/material.dart';
 
 class ItemGridTile extends StatelessWidget {

@@ -1,11 +1,11 @@
-import 'package:dd_music_playlist/src/network/data_source/playlist_data_source.dart';
-import 'package:dd_music_playlist/src/item.dart';
+import 'package:dd_music_playlist/src/model/item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'item_page.dart';
 
-class MusicCatalog extends ChangeNotifier {
+import 'model/item_page.dart';
+
+class PlaylistCatalog extends ChangeNotifier {
   static const maxCacheDistance = 100;
 
   final Map<int, ItemPage> _pages = {};

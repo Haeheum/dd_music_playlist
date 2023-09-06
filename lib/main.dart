@@ -1,12 +1,10 @@
-import 'package:dd_music_playlist/src/item.dart';
-import 'package:dd_music_playlist/src/item_list_tile.dart';
+import 'package:dd_music_playlist/src/model/item.dart';
+import 'package:dd_music_playlist/src/ui_component/item_list_tile.dart';
 import 'package:dd_music_playlist/src/playlist_catalog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-const apiKey = 'AIzaSyCBpA_Ij4urqGOptMIGGuHW0QG6VfkPmGY';
-const playlistId = 'PLZBpWYucMEG9NG-YWc8VvroYLxuO0_dkd';
-const kind = 'youtube#video';
+
 
 void main() {
   runApp(const MyApp());
@@ -17,18 +15,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<MusicCatalog>(
-      create: (context) => MusicCatalog(),
+    return ChangeNotifierProvider<PlaylistCatalog>(
+      create: (context) => PlaylistCatalog(),
       child: MaterialApp(
         home: Scaffold(
-          body: Selector<MusicCatalog, int?>(
+          body: Selector<PlaylistCatalog, int?>(
             selector: (context, musicCatalog) => musicCatalog.itemCount,
             builder: (context, int? value, Widget? child) =>
                 ListView.builder(
               itemBuilder: (context, index) {
-                var musicCatalog = Provider.of<MusicCatalog>(context);
+                var playlistCatalog = Provider.of<PlaylistCatalog>(context);
 
-                return switch (musicCatalog.getByIndex(index)) {
+                return switch (playlistCatalog.getByIndex(index)) {
                   Item(isLoading: true) => const LoadingItemListTile(),
                   var item => ItemListTile(item: item)
                 };

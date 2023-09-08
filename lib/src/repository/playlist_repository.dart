@@ -1,13 +1,8 @@
+import 'package:flutter/material.dart';
+
 import '../model/item_page.dart';
 
-class PlaylistRepository {
-
-  static final PlaylistRepository instance = PlaylistRepository._();
-
-  PlaylistRepository._();
-
-  factory PlaylistRepository() => instance;
-
+class PlaylistRepository extends ChangeNotifier {
   static const maxCacheDistance = 100;
 
   final Map<int, ItemPage> _pages = {};
@@ -26,4 +21,16 @@ class PlaylistRepository {
       return _pages[page];
   }
 
+
+  void _pruneCache(int currentStartingIndex) {
+    final keysToRemove = <int>{};
+    for (final key in _pages.keys) {
+      if ((key - currentStartingIndex).abs() > maxCacheDistance) {
+        keysToRemove.add(key);
+      }
+    }
+    for (final key in keysToRemove) {
+      _pages.remove(key);
+    }
+  }
 }
